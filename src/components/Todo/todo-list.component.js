@@ -10,7 +10,7 @@ export default class TodoList extends Component {
     super(props)
     this.state = {
       loading: true,
-      students: []
+      todo: []
     };
   }
 
@@ -18,7 +18,7 @@ export default class TodoList extends Component {
     axios.get('todo')
       .then(res => {
         this.setState({
-          students: res.data,
+          todo: res.data,
           loading: false
 
         });
@@ -30,7 +30,7 @@ export default class TodoList extends Component {
   }
 
   DataTable() {
-    return this.state.students.map((res, i) => {
+    return this.state.todo.map((res, i) => {
       return <TodoTableRow obj={res} key={i} />;
     });
   }

@@ -47,7 +47,7 @@ class App extends Component {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/todo" component={CreateTodo} />
+            <AuthRoute exact path="/todo" component={CreateTodo} />
             <AuthRoute exact path="/todo-list" component={TodoList} />
             <AuthRoute exact path="/edit-todo/:id" component={EditTodo} />
             <NotificationContainer/>
