@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-//import TodoList from './Todo/todo-list.component';
+import TodoList from './Todo/todo-list.component';
 import { NotificationManager } from 'react-notifications';
 import LoadingSpinner from '../LoadingSpinner';
 
-class CreateTodo extends Component {
+export default class CreateTodo extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -130,7 +130,12 @@ class CreateTodo extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+                        <div className="col-md-6">
+                            <section className="tasktable">
+
+                                <TodoList />
+                            </section>
+                        </div>
                     </div>
                 </div>
 
@@ -144,5 +149,3 @@ class CreateTodo extends Component {
     }
 }
 
-
-export default CreateTodo;
