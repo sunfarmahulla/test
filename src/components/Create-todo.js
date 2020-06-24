@@ -130,12 +130,7 @@ class CreateTodo extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6">
-                            <section className="tasktable">
-
-                                <TodoList />
-                            </section>
-                        </div>
+                        
                     </div>
                 </div>
 
