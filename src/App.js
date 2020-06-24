@@ -6,7 +6,7 @@ import Navbar from './components/Navbar'
 import Landing from './components/Landing'
 import Login from './components/Login'
 import Register from './components/Register'
-import CreateTodo from './components/Todo/create-todo.component';
+import CreateTodo from './components/Create-todo';
 import TodoList from './components/Todo/todo-list.component.js';
 import EditTodo from './components/Todo/edit-todo.component';
 import 'react-notifications/lib/notifications.css';

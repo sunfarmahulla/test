@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import TodoList from './todo-list.component';
+import TodoList from './Todo/todo-list.component';
 import { NotificationManager } from 'react-notifications';
-import LoadingSpinner from '../../LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner';
 
-export default class CreateTodo extends Component {
+class CreateTodo extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -150,3 +150,4 @@ export default class CreateTodo extends Component {
 }
 
 
+export default CreateTodo;
