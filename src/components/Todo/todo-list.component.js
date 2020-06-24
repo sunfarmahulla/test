@@ -14,7 +14,7 @@ export default class TodoList extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get('todo')
       .then(res => {
         this.setState({
