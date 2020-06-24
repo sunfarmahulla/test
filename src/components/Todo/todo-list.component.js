@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import TodoTableRow from './TodoTableRow';
-import LoadingSpinner from '../../LoadingSpinner';
-import { NotificationManager } from 'react-notifications';
+import { Link } from 'react-router-dom';
+//import TodoTableRow from './TodoTableRow';
+//import LoadingSpinner from '../../LoadingSpinner';
+//import { NotificationManager } from 'react-notifications';
 
 export default class TodoList extends Component {
 
@@ -10,34 +11,41 @@ export default class TodoList extends Component {
     super(props)
     this.state = {
       loading: true,
-      todo: []
+      persons: []
     };
   }
 
-  componentWillMount() {
-    axios.get('todo')
+  // componentDidMount() {
+  //   axios.get('todo')
+  //     .then(res => {
+  //       this.setState({
+  //         todo: res.data,
+  //         loading: false
+
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       NotificationManager.error('Error while fetching data', 'Fail');
+  //     })
+  // }
+  componentDidMount() {
+    axios.get(`todo/`)
       .then(res => {
-        this.setState({
-          todo: res.data,
-          loading: false
-
-        });
+        const persons = res.data;
+        this.setState({ persons });
       })
-      .catch((error) => {
-        console.log(error);
-        NotificationManager.error('Error while fetching data', 'Fail');
-      })
-  }
+  } 
 
-  DataTable() {
-    return this.state.todo.map((res, i) => {
-      return <TodoTableRow obj={res} key={i} />;
-    });
-  }
+  // DataTable() {
+  //   return this.state.todo.map((res, i) => {
+  //     return <TodoTableRow obj={res} key={i} />;
+  //   });
+  // }
 
 
   render() {
-    const loading = this.state.loading;
+    ///const loading = this.state.loading;
     return (<section>
       <section className="alert alert-success">
         <center><h3>Todo Tasks List</h3></center>
@@ -51,11 +59,29 @@ export default class TodoList extends Component {
             <th>Action</th>
           </tr>
         </thead>
-        {loading ? <LoadingSpinner /> :
+        {/* {loading ? <LoadingSpinner /> :
           <tbody>
             {this.DataTable()}
           </tbody>
-            }
+            } */}
+
+{ this.state.persons.map(person => 
+          <tr className="table-primary">
+            <td>{person.name}</td>
+            <td>{person.discription}</td>
+            
+            <td>
+            <Link className="edit-link" to={"/edit-todo/" + person.id}>
+                        <i className="fa fa-edit"></i>
+                    </Link>
+               <form onSubmit={this.handleSubmit}>
+                  <button type="submit" value={person.id} onClick={e => this.onClick(e)}>Delete</button>
+              </form>
+              
+            </td>
+            </tr>
+          )}
+
       </table>
 
     </section>);
